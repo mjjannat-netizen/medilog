@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Doctors - MediLog</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background: linear-gradient(135deg, #e0f7fa, #e8f5e9);
+            min-height: 100vh;
+        }
+        .navbar {
+            background: linear-gradient(to right, #1976d2, #42a5f5) !important;
+        }
+        .main-card {
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            margin-top: 40px;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-dark">
+        <div class="container">
+            <a class="navbar-brand" href="/">🏥 MediLog</a>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="main-card">
+            <div class="d-flex justify-content-between align-items-center mb-4">
+                <h2>👨‍⚕️ Doctors List</h2>
+                <a href="/doctors/add" class="btn btn-success">+ Add Doctor</a>
+            </div>
+            <table class="table table-hover">
+                <thead class="table-success">
+                    <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Specialization</th>
+                        <th>Phone</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for d in doctors %}
+                    <tr>
+                        <td>{{ d[0] }}</td>
+                        <td>{{ d[1] }}</td>
+                        <td>{{ d[2] }}</td>
+                        <td>{{ d[3] }}</td>
+                        <td>
+                            <a href="/doctors/delete/{{ d[0] }}" class="btn btn-danger btn-sm" onclick="return confirm('Delete korbe?')">🗑️ Delete</a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+</html>
